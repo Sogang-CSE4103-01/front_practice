@@ -1,4 +1,4 @@
-import Alert from '@enact/sandstone/Alert';
+//import Alert from '@enact/sandstone/Alert';
 import BodyText from '@enact/sandstone/BodyText';
 import Button from '@enact/sandstone/Button';
 import { Header, Panel } from '@enact/sandstone/Panels';
@@ -53,25 +53,7 @@ const Main = props => {
 						{$L('Open Alert')}
 					</Button>
 					<BodyText>{`procStat : ${JSON.stringify(procStat)}`}</BodyText>
-					<Alert type="overlay" open={isPopupOpen} onClose={onCloseAlert}>
-						<span>{$L('This is an alert message.')}</span>
-						<buttons>
-							<Button
-								size="small"
-								className={css.buttonCell}
-								onClick={onLaunchApp}
-							>
-								Launch
-							</Button>
-							<Button
-								size="small"
-								className={css.buttonCell}
-								onClick={onCloseAlert}
-							>
-								{$L('Close')}
-							</Button>
-						</buttons>
-					</Alert>
+					
 
 					{/* Login Button */}
 					<Button onClick={handleLoginOpen} size="small" className={css.buttonCell}>
