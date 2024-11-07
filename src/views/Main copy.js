@@ -3,8 +3,8 @@ import BodyText from '@enact/sandstone/BodyText';
 import Button from '@enact/sandstone/Button';
 import { Header, Panel } from '@enact/sandstone/Panels';
 import { usePopup } from './MainState';
-import { useLogin } from './LoginState';
-import Login from './Login';
+import { useLogin } from '../App/login/LoginState';
+import Login from '../App/login/Login';
 
 import css from './Main.module.less';
 import $L from '@enact/i18n/$L';

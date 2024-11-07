@@ -1,5 +1,5 @@
 import { useState, useCallback } from 'react';
-import debugLog from '../libs/log';
+import debugLog from '../../libs/log';
 
 export const useLogin = () => {
 	const [isLoginOpen, setLoginOpen] = useState(false);
@@ -17,17 +17,24 @@ export const useLogin = () => {
 	}, []);
 
 	const handleUsernameChange = useCallback((e) => {
-		if (e && e.target) {
-			setUsername(e.target.value);
+		console.log("!!!!!!!!!");
+		if (e && e.value !== undefined) {
+			setUsername(e.value);
 		} else {
 			console.warn('handleUsernameChange: Invalid event object', e);
 		}
 		//setUsername(e.target.value);
-	}, []);
+	}, [setUsername]);
 
 	const handlePasswordChange = useCallback((e) => {
-		setPassword(e.target.value);
-	}, []);
+		console.log("??????????");
+		//setPassword(e.target.value);
+		if (e && e.value !== undefined) {
+			setPassword(e.value);
+		} else {
+			console.warn('handlePasswordChange: Invalid event object', e);
+		}
+	}, [setPassword]);
 
 	const handleLogin = useCallback(async () => {
 		debugLog('Attempting login', { username, password });

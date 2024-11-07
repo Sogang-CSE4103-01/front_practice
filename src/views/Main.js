@@ -3,15 +3,15 @@ import BodyText from '@enact/sandstone/BodyText';
 import Button from '@enact/sandstone/Button';
 import { Header, Panel } from '@enact/sandstone/Panels';
 import { usePopup } from './MainState';
-import { useLogin } from './LoginState';
-import Login from './Login';
+import { useLogin } from '../App/login/LoginState';
+import Login from '../App/login/Login';
 
 import css from './Main.module.less';
 import $L from '@enact/i18n/$L';
-import { useProcStat } from '../hooks/useData';
+//import { useProcStat } from '../hooks/useData';
 
 const Main = props => {
-	const procStat = useProcStat();
+	//const procStat = useProcStat();
 	const { isPopupOpen, handlePopupOpen, handlePopupClose, handleLaunchApp } = usePopup();
 	const {
 		isLoginOpen,
@@ -37,8 +37,8 @@ const Main = props => {
 					isOpen={isLoginOpen}
 					onClose={handleLoginClose}
 					onSubmit={handleLogin}
-					onUsernameChange={handleUsernameChange}
-					onPasswordChange={handlePasswordChange}
+					handleUsernameChange={handleUsernameChange}
+					handlePasswordChange={handlePasswordChange}
 					username={username}
 					password={password}
 				/>
@@ -52,7 +52,7 @@ const Main = props => {
 					<Button onClick={onOpenAlert} size="small" className={css.buttonCell}>
 						{$L('Open Alert')}
 					</Button>
-					<BodyText>{`procStat : ${JSON.stringify(procStat)}`}</BodyText>
+					{/*<BodyText>{`procStat : ${JSON.stringify(procStat)}`}</BodyText>*/}
 					<Alert type="overlay" open={isPopupOpen} onClose={onCloseAlert}>
 						<span>{$L('This is an alert message.')}</span>
 						<buttons>

@@ -19,7 +19,7 @@ const Login = ({ onClose, onSubmit, username, password, handleUsernameChange, ha
 				placeholder="Password"
 				value={password}
 				//onChange={onPasswordChange}
-				onchange={handlePasswordChange}
+				onChange={handlePasswordChange}
 				type="password"
 				className={css.input}
 			/>
