@@ -36,8 +36,12 @@ export const useLogin = () => {
 		}
 	}, [setPassword]);
 
-	const handleLogin = useCallback(async () => {
+	/*const handleLogin = useCallback(async () => {
 		debugLog('Attempting login', { username, password });
+
+
+
+
 		// 이 부분에 실제 로그인 API 호출을 추가할 수 있습니다.
 		if (username === 'user' && password === 'password') {
 			debugLog('Login successful');
@@ -45,7 +49,34 @@ export const useLogin = () => {
 		} else {
 			debugLog('Login failed');
 		}
-	}, [username, password, handleLoginClose]); // handleLoginClose를 종속성 배열에 추가
+	}, [username, password, handleLoginClose]); // handleLoginClose를 종속성 배열에 추가 */
+
+	const handleLogin = useCallback(async () => {
+		debugLog('Attempting login', { username, password });
+	
+		try {
+			const response = await fetch(`http://localhost:8080/api/login?username=${username}&password=${password}`, {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				credentials: 'include',  // 인증 정보가 포함된 요청을 보낼 때 사용
+			});
+	
+			if (!response.ok) {
+				throw new Error('Login failed');
+			}
+	
+			const data = await response.json();
+			debugLog('Login successful', data);
+	
+			handleLoginClose();
+		} catch (error) {
+			debugLog('Login failed', error.message);
+		}
+	}, [username, password, handleLoginClose]);
+	
+	
 
 	return {
 		isLoginOpen,
