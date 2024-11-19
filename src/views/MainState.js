@@ -18,13 +18,13 @@ export const useMainState = () => {
 			id: 1,
 			title: "첫 번째 비디오",
 			thumbnail: video1,
-			src: 'http://media.w3.org/2010/05/video/movie_300.mp4' // 비디오 파일 URL 추가
+			src: 'http://media.w3.org/2010/05/video/movie_300.mp4'
 		},
 		{
 			id: 2,
 			title: "두 번째 비디오",
 			thumbnail: video2,
-			src: 'https://example.com/video2.mp4'
+			src: 'http://media.w3.org/2010/05/video/movie_300.mp4'
 		},
 		{
 			id: 3,
@@ -67,6 +67,72 @@ export const useMainState = () => {
 			title: "아홉 번째 비디오",
 			thumbnail: video6,
 			src: 'https://example.com/video9.mp4'
+		},
+		{
+			id: 10,
+			title: "열 번째 비디오",
+			thumbnail: video1,
+			src: 'https://example.com/video10.mp4'
+		},
+		{
+			id: 11,
+			title: "열한 번째 비디오",
+			thumbnail: video2,
+			src: 'https://example.com/video11.mp4'
+		},
+		{
+			id: 12,
+			title: "열두 번째 비디오",
+			thumbnail: video3,
+			src: 'https://example.com/video12.mp4'
+		},
+		{
+			id: 13,
+			title: "열세 번째 비디오",
+			thumbnail: video4,
+			src: 'https://example.com/video13.mp4'
+		},
+		{
+			id: 14,
+			title: "열네 번째 비디오",
+			thumbnail: video5,
+			src: 'https://example.com/video14.mp4'
+		},
+		{
+			id: 15,
+			title: "열다섯 번째 비디오",
+			thumbnail: video6,
+			src: 'https://example.com/video15.mp4'
+		},
+		{
+			id: 16,
+			title: "열여섯 번째 비디오",
+			thumbnail: video1,
+			src: 'https://example.com/video16.mp4'
+		},
+		{
+			id: 17,
+			title: "열일곱 번째 비디오",
+			thumbnail: video2,
+			src: 'https://example.com/video17.mp4'
+		},
+		{
+			id: 18,
+			title: "열여덟 번째 비디오",
+			thumbnail: video3,
+			src: 'https://example.com/video18.mp4'
+		},
+		{
+			id: 19,
+			title: "열아홉 번째 비디오",
+			thumbnail: video4,
+			src: 'https://example.com/video19.mp4'
+		},
+		{
+			id: 20,
+			title: "스무 번째 비디오",
+			thumbnail: video5,
+			src: 'https://example.com/video20.mp4'
 		}
 	]);
 

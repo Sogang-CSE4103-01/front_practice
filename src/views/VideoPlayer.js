@@ -1,5 +1,4 @@
 // src/views/VideoPlayer.js
-import kind from '@enact/core/kind';
 import Button from '@enact/sandstone/Button';
 import { MediaControls } from '@enact/sandstone/MediaPlayer';
 import VideoPlayer from '@enact/sandstone/VideoPlayer';
@@ -45,7 +44,7 @@ const SelectableVideoPlayer = ({ video, onClose }) => {
             }
         }
     }, [selection]);
-
+    // eslint-disable-next-line
     const setVideo = (video) => {
         videoRef.current = video;
     };
