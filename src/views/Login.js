@@ -54,11 +54,35 @@ import $L from '@enact/i18n/$L';
 import Button from '@enact/sandstone/Button';
 import Input from '@enact/sandstone/Input';
 import css from './Login.module.less';
+import css2 from './Signup.module.less';
 import TabLayout, {Tab} from '@enact/sandstone/TabLayout';
 import { useSignupState } from './SignupState';
+import {useLogin} from './LoginState';
 
-const Login = ({ onClose, onSubmit, username, password, handleUsernameChange, handlePasswordChange, handleInputChange, handleSignup }) => {
+//const {username,password,handleSignupUsernameChange,handleSignupPasswordChange,handleSignup} = useSignupState();
+const Login = ({onSubmit, onClose}) => {
     console.log("rendering login");
+    //const {handleSignupUsernameChange,handleSignupPasswordChange,handleSignup} = useSignupState();
+
+    const {
+        newusername, 
+        newpassword, 
+        handleSignupUsernameChange, 
+        handleSignupPasswordChange,
+        handleSignup,
+    } = useSignupState();
+
+    const {
+        isLoginOpen,
+		handleLoginOpen,
+		handleLoginClose,
+		handleLogin,
+		handleUsernameChange,
+		handlePasswordChange,
+		username,
+		password,
+    } = useLogin();
+
     return(
         <Panel >
             <Header title={$L('Log In and Sign Up')}/>
@@ -80,7 +104,7 @@ const Login = ({ onClose, onSubmit, username, password, handleUsernameChange, ha
                             type="password"
                             className={css.input}
                         />
-                        <Button onClick={onSubmit} size="small" className={css.button}>
+                        <Button onClick={handleLogin} size="small" className={css.button}>
                             Login
                         </Button>
                         <Button onClick={onClose} size="small" className={css.button}>
@@ -90,25 +114,25 @@ const Login = ({ onClose, onSubmit, username, password, handleUsernameChange, ha
                 </Tab>
 
                 <Tab title = {$L('Sign Up')}>
-                    <div className={css.signupContainer}>
+                    <div className={css2.signupContainer}>
                         <BodyText>{$L('회원가입하여 서비스를 이용하세요.')}</BodyText>
                         <Input
                             type="text"
                             name="username"
                             placeholder={$L('사용자 이름')}
-                            value={username}
-                            onChange={handleInputChange}
-                            className={css.inputField}
+                            value={newusername}
+                            onChange={handleSignupUsernameChange}
+                            className={css2.inputField}
                         />
                         <Input
                             type="password"
                             name="password"
                             placeholder={$L('비밀번호')}
-                            value={password}
-                            onChange={handleInputChange}
-                            className={css.inputField}
+                            value={newpassword}
+                            onChange={handleSignupPasswordChange}
+                            className={css2.inputField}
                         />
-                        <Button onClick={handleSignup} className={css.signupButton}>
+                        <Button onClick={handleSignup} className={css2.signupButton}>
                             {$L('회원가입')}
                         </Button>
                     </div>

@@ -20,6 +20,7 @@ export const useLogin = () => {
 	const handleUsernameChange = useCallback((e) => {
 		if (e && e.value !== undefined) {
 			setUsername(e.value);
+			console.log('log in : name submitted');
 		} else {
 			console.warn('handleUsernameChange: Invalid event object', e);
 		}
@@ -28,6 +29,7 @@ export const useLogin = () => {
 	const handlePasswordChange = useCallback((e) => {
 		if (e && e.value !== undefined) {
 			setPassword(e.value);
+			console.log('log in : PW submitted');
 		} else {
 			console.warn('handlePasswordChange: Invalid event object', e);
 		}
@@ -36,11 +38,12 @@ export const useLogin = () => {
 	const handleLogin = useCallback(async () => {
 		debugLog('Attempting login', { username, password });
 		try {
-			const response = await fetch(`http://localhost:8080/api/login?username=${username}&password=${password}`, {
+			const response = await fetch(`https://connected-backend-yir6.onrender.com/api/login`, {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json',
 				},
+				body : JSON.stringify({username, password}),
 				credentials: 'include',
 			});
 			if (!response.ok) {
