@@ -4,7 +4,7 @@ import TabLayout, { Tab } from '@enact/sandstone/TabLayout';
 import { useMainState } from './MainState';
 import SelectableVideoPlayer from './VideoPlayer';
 import Scroller from '@enact/sandstone/Scroller';
-import ImageItem from '@enact/sandstone/ImageItem';
+import ImageItem from '@enact/sandstone/ImageItem';// eslint-disable-next-line
 import { Button, Item, Icon } from '@enact/sandstone';
 import css from './Main.module.less';
 import $L from '@enact/i18n/$L';
@@ -44,7 +44,7 @@ const Main = (props) => {
             style={{
                 width: scaleToRem(900),
                 height: scaleToRem(588)
-            }}
+            }}// eslint-disable-next-line
             onClick={() => handleVideoClick(video)} // 클릭 시 비디오 선택
         >
             {video.title} {/* 비디오 제목을 표시 */}
@@ -53,15 +53,15 @@ const Main = (props) => {
 
     return (
         <Panel {...props}>
-            {selectedVideo && (
+            {selectedVideo && (// eslint-disable-next-line
                 <SelectableVideoPlayer video={selectedVideo} onClose={handleClosePlayer} />
             )}
 
             <Header title={$L('LG')} />
 
-            <div style={{ display: 'flex', height: '100vh' }}>
+            <div style={{ display: 'flex', height: '100vh', width: '100%' }}>
                 <TabLayout
-                    selected={activeTab}
+                    selected={activeTab}// eslint-disable-next-line
                     onSelect={(tabId) => {
                         console.log('Selected Tab:', tabId);
                         const selectedTabKey = ['videoTab', 'recommended', 'additional'][tabId.index];
@@ -69,11 +69,11 @@ const Main = (props) => {
                         setInnerActiveTab('watching'); // 내부 탭 초기화
                     }}
                     orientation="vertical" // 바깥쪽 탭을 세로로 설정
-                    style={{ width: '3000px' }} // 바깥쪽 탭 너비 설정
+                    style={{ width: '100%' }} // 바깥쪽 탭 너비 설정
                 >
                     <Tab title={tabsWithIcons[0].title} icon={tabsWithIcons[0].icon}>
                         <TabLayout
-                            selected={innerActiveTab}
+                            selected={innerActiveTab}// eslint-disable-next-line
                             onSelect={(tabId) => {
                                 const selectedInnerTabKey = ['watching', 'recommended', 'additional'][tabId.index];
                                 setInnerActiveTab(selectedInnerTabKey);
@@ -116,7 +116,7 @@ const Main = (props) => {
                     </Tab>
                     <Tab title={tabsWithIcons[1].title} icon={tabsWithIcons[1].icon}>
                         <TabLayout
-                            selected={innerActiveTab}
+                            selected={innerActiveTab}// eslint-disable-next-line
                             onSelect={(tabId) => {
                                 const selectedInnerTabKey = ['watching', 'recommended', 'additional'][tabId.index];
                                 setInnerActiveTab(selectedInnerTabKey);
@@ -161,9 +161,7 @@ const Main = (props) => {
                         <Item slotBefore={<Icon>playcircle</Icon>}>Single Item</Item>
                     </Tab>
                 </TabLayout>
-                <div style={{ flex: 1 }}>
-                    {/* 여기서 나머지 콘텐츠를 추가할 수 있습니다. */}
-                </div>
+
             </div>
         </Panel>
     );

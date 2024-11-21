@@ -47,15 +47,17 @@ export default Login;
 */
 
 // src/views/Login.js
-// src/views/Login.js 
+// src/views/Login.js
 import BodyText from '@enact/sandstone/BodyText';
 import {Header, Panel} from '@enact/sandstone/Panels';
 import $L from '@enact/i18n/$L';
 import Button from '@enact/sandstone/Button';
 import Input from '@enact/sandstone/Input';
 import css from './Login.module.less';
+
 import css2 from './Signup.module.less';
 import TabLayout, {Tab} from '@enact/sandstone/TabLayout';
+
 import { useSignupState } from './SignupState';
 import {useLogin} from './LoginState';
 
@@ -138,9 +140,7 @@ const Login = ({onSubmit, onClose}) => {
                     </div>
 
                 </Tab>
-
             </TabLayout>
-            
         </Panel>
     )
 }

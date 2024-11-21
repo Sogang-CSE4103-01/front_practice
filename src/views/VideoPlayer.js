@@ -44,7 +44,7 @@ const SelectableVideoPlayer = ({ video, onClose }) => {
             }
         }
     }, [selection]);
-    // eslint-disable-next-line
+
     const setVideo = (video) => {
         videoRef.current = video;
     };
@@ -59,15 +59,18 @@ const SelectableVideoPlayer = ({ video, onClose }) => {
                 onTimeUpdate={handleTimeUpdate}
                 selection={selection}
                 ref={setVideo}
+                style={{ width: '100%', height: '100%' }} // 전체 화면 차지
             >
                 <MediaControls>
                     <Button onClick={handleToggleSelection} selected={selecting}>
                         {selecting ? 'Play Loop' : 'Set End Time'}
                     </Button>
-                    <Button onClick={onClose}>닫기</Button>
                 </MediaControls>
-                <source src={video.src} />
+                <source src={video.src} type="video/mp4" />
             </VideoPlayer>
+            <Button onClick={onClose} style={{ position: 'absolute', top: '20px', right: '20px', zIndex: 1001 }}>
+                X
+            </Button>
         </div>
     );
 };
