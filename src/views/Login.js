@@ -47,14 +47,14 @@ export default Login;
 */
 
 // src/views/Login.js
-// src/views/Login.js 
+// src/views/Login.js
 import BodyText from '@enact/sandstone/BodyText';
 import {Header, Panel} from '@enact/sandstone/Panels';
 import $L from '@enact/i18n/$L';
 import Button from '@enact/sandstone/Button';
 import Input from '@enact/sandstone/Input';
 import css from './Login.module.less';
-import TabLayout, {Tab} from '@enact/sandstone/TabLayout';
+import TabLayout, {Tab} from '@enact/sandstone/TabLayout';// eslint-disable-next-line
 import { useSignupState } from './SignupState';
 
 const Login = ({ onClose, onSubmit, username, password, handleUsernameChange, handlePasswordChange, handleInputChange, handleSignup }) => {
@@ -114,9 +114,7 @@ const Login = ({ onClose, onSubmit, username, password, handleUsernameChange, ha
                     </div>
 
                 </Tab>
-
             </TabLayout>
-            
         </Panel>
     )
 }
