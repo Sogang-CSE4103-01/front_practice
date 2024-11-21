@@ -1,0 +1,15 @@
+/* src/App.css */
+body, html {
+    margin: 0;
+    height: 100%; /* 전체 높이를 사용하기 위해 */
+}
+
+.gradient-background {
+    height: 100vh; /* 전체 화면 높이 */
+    width: 100vw; /* 전체 화면 너비 */
+    background: linear-gradient(to right, #ff7e5f, #feb47b); /* 원하는 그라데이션 색상 */
+    position: absolute; /* 위치를 절대적으로 설정 */
+    top: 0; /* 상단에 고정 */
+    left: 0; /* 왼쪽에 고정 */
+    z-index: -1; /* 패널 뒤에 위치하게 설정 */
+}
