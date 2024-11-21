@@ -47,12 +47,54 @@ export default Login;
 */
 
 // src/views/Login.js
-// src/views/Login.js
+// src/views/Login.js 
 import BodyText from '@enact/sandstone/BodyText';
+import {Header, Panel} from '@enact/sandstone/Panels';
+import $L from '@enact/i18n/$L';
 import Button from '@enact/sandstone/Button';
 import Input from '@enact/sandstone/Input';
 import css from './Login.module.less';
+import TabLayout, {Tab} from '@enact/sandstone/TabLayout';
 
+const Login = ({ onClose, onSubmit, username, password, handleUsernameChange, handlePasswordChange }) => {
+    console.log("rendering login");
+    return(
+        <Panel >
+            <Header title={$L('Log In and Sign Up')}/>
+            <TabLayout>
+                <Tab title = {$L('Log In')}>
+                    <div className={css.loginContainer}>
+                        <BodyText className={css.title}>Login</BodyText>
+                        <Input
+                            placeholder="Username"
+                            value={username}
+                            onChange={handleUsernameChange}
+                            type="text"
+                            className={css.input}
+                        />
+                        <Input
+                            placeholder="Password"
+                            value={password}
+                            onChange={handlePasswordChange}
+                            type="password"
+                            className={css.input}
+                        />
+                        <Button onClick={onSubmit} size="small" className={css.button}>
+                            Login
+                        </Button>
+                        <Button onClick={onClose} size="small" className={css.button}>
+                            Cancel
+                        </Button>
+                    </div>
+                </Tab>
+            </TabLayout>
+
+        </Panel>
+    )
+}
+
+export default Login;
+/*
 const Login = ({ onClose, onSubmit, username, password, handleUsernameChange, handlePasswordChange }) => {
 	return (
 		<div className={css.loginContainer}>
@@ -79,7 +121,7 @@ const Login = ({ onClose, onSubmit, username, password, handleUsernameChange, ha
 			</Button>
 		</div>
 	);
-};
+}; */
 
-export default Login;
+//export default Login;
 
