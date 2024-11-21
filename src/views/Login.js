@@ -55,8 +55,9 @@ import Button from '@enact/sandstone/Button';
 import Input from '@enact/sandstone/Input';
 import css from './Login.module.less';
 import TabLayout, {Tab} from '@enact/sandstone/TabLayout';
+import { useSignupState } from './SignupState';
 
-const Login = ({ onClose, onSubmit, username, password, handleUsernameChange, handlePasswordChange }) => {
+const Login = ({ onClose, onSubmit, username, password, handleUsernameChange, handlePasswordChange, handleInputChange, handleSignup }) => {
     console.log("rendering login");
     return(
         <Panel >
@@ -87,8 +88,35 @@ const Login = ({ onClose, onSubmit, username, password, handleUsernameChange, ha
                         </Button>
                     </div>
                 </Tab>
-            </TabLayout>
 
+                <Tab title = {$L('Sign Up')}>
+                    <div className={css.signupContainer}>
+                        <BodyText>{$L('회원가입하여 서비스를 이용하세요.')}</BodyText>
+                        <Input
+                            type="text"
+                            name="username"
+                            placeholder={$L('사용자 이름')}
+                            value={username}
+                            onChange={handleInputChange}
+                            className={css.inputField}
+                        />
+                        <Input
+                            type="password"
+                            name="password"
+                            placeholder={$L('비밀번호')}
+                            value={password}
+                            onChange={handleInputChange}
+                            className={css.inputField}
+                        />
+                        <Button onClick={handleSignup} className={css.signupButton}>
+                            {$L('회원가입')}
+                        </Button>
+                    </div>
+
+                </Tab>
+
+            </TabLayout>
+            
         </Panel>
     )
 }
