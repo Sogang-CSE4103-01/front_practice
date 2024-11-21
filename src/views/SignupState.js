@@ -43,7 +43,7 @@ export const useSignupState = () => {
         debugLog('Attempt Sign In', {newusername, newpassword}); // 디버그 로그 출력
         //navigate('/login'); // 회원가입 후 로그인 화면으로 이동 (필요에 따라 변경 가능)
         try{
-            const response = await fetch('https://connected-backend-yir6.onrender.com/api/register', {
+            const response = await fetch('https://cors-anywhere-herokuapp.com/https://connected-backend-yir6.onrender.com/api/register', {
                 method: 'POST',
                 headers: {
                     'Content-Type' : 'application/json',

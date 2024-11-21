@@ -38,7 +38,7 @@ export const useLogin = () => {
 	const handleLogin = useCallback(async () => {
 		debugLog('Attempting login', { username, password });
 		try {
-			const response = await fetch(`https://connected-backend-yir6.onrender.com/api/login`, {
+			const response = await fetch(`https://cors-anywhere-herokuapp.com/https://connected-backend-yir6.onrender.com/api/login`, {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json',
