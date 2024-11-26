@@ -24,8 +24,21 @@ const App = (props) => {
 	const [skinVariants, setSkinVariants] = useState({ highContrast: false });
 	const handleBack = useBackHandler();
 	const handleClose = useCloseHandler();
-	const { isLoginOpen, handleLoginClose } = useLogin();
+	//const { isLoginOpen, handleLoginClose } = useLogin();
 	useDocumentEvent(setSkinVariants);
+
+	const {
+        isLoginOpen,
+		isLoginSuccess,
+		handleLoginOpen,
+		handleLoginClose,
+		handleLogin,
+        handleCancel,
+		handleUsernameChange,
+		handlePasswordChange,
+		username,
+		password,
+    } = useLogin();
 
 	return (
 		<Panels
@@ -34,8 +47,11 @@ const App = (props) => {
 			onBack={handleBack}
 			onClose={handleClose}
 		>
-			{isLoginOpen ? (
-				<Login onClose={handleLoginClose} />
+			{isLoginOpen && isLoginSuccess ? (
+				//<Login onClose={handleLoginClose} />
+				<Login onLogin={handleLoginClose} />
+			//) : isLoginSuccess ? (
+			//	<Main />
 			) : (
 				<Main />
 			)}

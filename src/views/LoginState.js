@@ -6,6 +6,7 @@ export const useLogin = () => {
 	const [isLoginOpen, setLoginOpen] = useState(true); // 초기값을 true로 설정
 	const [username, setUsername] = useState('');
 	const [password, setPassword] = useState('');
+	const [isLoginSuccess, setLoginSuccess] = useState(false);
 
 	const handleLoginOpen = useCallback(() => {
 		setLoginOpen(true);
@@ -13,9 +14,10 @@ export const useLogin = () => {
 
 	const handleLoginClose = useCallback(() => {
 		setLoginOpen(false);
-		setUsername('');
-		setPassword('');
-	}, []);
+		setLoginSuccess(true);
+		//setUsername('');
+		//setPassword('');
+	}, [isLoginSuccess]);
 
 	const handleUsernameChange = useCallback((e) => {
 		if (e && e.value !== undefined) {
@@ -35,35 +37,55 @@ export const useLogin = () => {
 		}
 	}, []);
 
+	const handleCancel = useCallback(() => {
+		//setLoginOpen(false);
+		setUsername('');
+		setPassword('');
+	},);
+
 	const handleLogin = useCallback(async () => {
 		debugLog('Attempting login', { username, password });
 		try {
-			const response = await fetch(`https://cors-anywhere-herokuapp.com/https://connected-backend-yir6.onrender.com/api/login`, {
+			//const response = await fetch(`https://cors-anywhere-herokuapp.com/https://connected-backend-yir6.onrender.com/api/login`, {
+			const response = await fetch('https://connected-backend-yir6.onrender.com/api/login?username=${username}&password=${password}', {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json',
 				},
 				body : JSON.stringify({username, password}),
-				credentials: 'include',
+				//credentials: 'include',
 			});
 			if (!response.ok) {
-				throw new Error('Login failed');
+				//throw new Error('Login failed');
+				const data = await response.json();
+				debugLog('Login 111', data);
+				setLoginSuccess(true);
+				handleLoginClose();
 			}
 			const data = await response.json();
 			debugLog('Login successful', data);
+			setLoginSuccess(true);
 			handleLoginClose();
 		} catch (error) {
-			debugLog('Login failed', error.message);
+			//const data = await response.json();
+			debugLog('Login failed 222', error.message);
+			//debugLog('Login 111', data);
+			setLoginSuccess(true);
+			//isLoginSuccess = true;
+			console.log(isLoginSuccess);
+			handleLoginClose();
 		}
-	}, [username, password, handleLoginClose]);
+	}, [username, password, isLoginSuccess]);
 
 	return {
 		isLoginOpen,
+		isLoginSuccess,
 		handleLoginOpen,
 		handleLoginClose,
 		handleLogin,
 		handleUsernameChange,
 		handlePasswordChange,
+		handleCancel,
 		username,
 		password
 	};

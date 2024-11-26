@@ -79,6 +79,7 @@ const Login = ({onSubmit, onClose}) => {
 		handleLoginOpen,
 		handleLoginClose,
 		handleLogin,
+        handleCancel,
 		handleUsernameChange,
 		handlePasswordChange,
 		username,
@@ -109,7 +110,7 @@ const Login = ({onSubmit, onClose}) => {
                         <Button onClick={handleLogin} size="small" className={css.button}>
                             Login
                         </Button>
-                        <Button onClick={onClose} size="small" className={css.button}>
+                        <Button onClick={handleCancel} size="small" className={css.button}>
                             Cancel
                         </Button>
                     </div>
